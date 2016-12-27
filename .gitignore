@@ -44,3 +44,6 @@ ${CIRCLE_ARTIFACTS}
 *.local.*
 CBT_READY
 CBT_KILL
+
+# Semantic UI
+semantic
