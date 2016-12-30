@@ -47,7 +47,7 @@ const makeAttributes = attributes => {
 }
 
 const mapObjToString = obj => R.pipe(
-  R.mapObjIndexed((value, key) => `${key}: "${value}"`),
+  R.mapObjIndexed((value, key) => `${key}: '${value}'`),
   R.values,
   R.join(', ')
 )(obj)
@@ -61,37 +61,115 @@ const parseHtml = R.pipe(
   himalaya.parse
 )
 
-const markup = `<div class="ui middle aligned center aligned grid">
+const markup = `<div class="ui menu">
+  <div class="header item">Brand</div>
+  <a class="active item">Link</a>
+  <a class="item">Link</a>
+  <div class="ui dropdown item">
+    Dropdown
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item">Action</div>
+      <div class="item">Another Action</div>
+      <div class="item">Something else here</div>
+      <div class="divider"></div>
+      <div class="item">Separated Link</div>
+      <div class="divider"></div>
+      <div class="item">One more separated link</div>
+    </div>
+  </div>
+  <div class="right menu">
+    <div class="item">
+      <div class="ui action left icon input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="Search">
+        <button class="ui button">Submit</button>
+      </div>
+    </div>
+    <a class="item">Link</a>
+  </div>
+</div>
+
+<div class="ui inverted menu">
+  <div class="header item">Brand</div>
+  <div class="active item">Link</div>
+  <a class="item">Link</a>
+  <div class="ui dropdown item">
+    Dropdown
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item">Action</div>
+      <div class="item">Another Action</div>
+      <div class="item">Something else here</div>
+      <div class="divider"></div>
+      <div class="item">Separated Link</div>
+      <div class="divider"></div>
+      <div class="item">One more separated link</div>
+    </div>
+  </div>
+  <div class="right menu">
+    <div class="item">
+      <div class="ui transparent inverted icon input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="Search">
+      </div>
+    </div>
+    <a class="item">Link</a>
+  </div>
+</div>
+
+<div class="ui secondary menu">
+  <div class="active item">Link</div>
+  <a class="item">Link</a>
+  <div class="ui dropdown item">
+    Dropdown
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item">Action</div>
+      <div class="item">Another Action</div>
+      <div class="item">Something else here</div>
+      <div class="divider"></div>
+      <div class="item">Separated Link</div>
+      <div class="divider"></div>
+      <div class="item">One more separated link</div>
+    </div>
+  </div>
+  <div class="right menu">
+    <div class="item">
+      <div class="ui action left icon input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="Search">
+        <button class="ui button">Submit</button>
+      </div>
+    </div>
+    <a class="item">Link</a>
+  </div>
+</div>
+
+<div class="ui three column doubling grid">
   <div class="column">
-    <h2 class="ui teal image header">
-      <img src="assets/images/logo.png" class="image">
-      <div class="content">
-        Log-in to your account
+    <div class="ui secondary pointing menu">
+      <div class="active item">Link</div>
+      <a class="item">Link</a>
+      <a class="item">Link</a>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="ui tabular menu">
+      <div class="active item">Link</div>
+      <a class="item">Link</a>
+      <a class="item">Link</a>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="ui pointing menu">
+      <div class="active item">Link</div>
+      <a class="item">Link</a>
+      <div class="right item">
+        Right Text
       </div>
-    </h2>
-    <form class="ui large form">
-      <div class="ui stacked segment">
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="text" name="email" placeholder="E-mail address">
-          </div>
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password">
-          </div>
-        </div>
-        <div class="ui fluid large teal submit button">Login</div>
-      </div>
-
-      <div class="ui error message"></div>
-
-    </form>
-
-    <div class="ui message">
-      New to us? <a href="#">Sign Up</a>
     </div>
   </div>
 </div>`
