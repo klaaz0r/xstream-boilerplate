@@ -2,6 +2,7 @@ import { div, a, i } from '@cycle/dom'
 
 export default function SidebarView(state$) {
   const vdom$ = state$
+    // .debug(console.log.bind(console, 'sidebar state'))
     .map(state => state.visible)
     .map(visible => div(`.ui.left.vertical.inverted.labeled.icon.overlay.sidebar.menu`, { class: { visible } }, [
       a('.ui.orange.right.floating.label', '<'),

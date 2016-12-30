@@ -6,7 +6,8 @@ import {makeHTTPDriver} from '@cycle/http'
 import {makeRouterDriver, supportsHistory} from 'cyclic-router'
 import {createHistory, createHashHistory} from 'history'
 import switchPath from 'switch-path'
-import onionify from 'cycle-onionify'
+// import onionify from 'cycle-onionify'
+import onionify from '../lib/osmosys'
 
 // Local imports
 import main from 'page/main'

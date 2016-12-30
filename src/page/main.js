@@ -3,19 +3,20 @@ import 'normalize-css'
 // Globals
 import xs from 'xstream'
 import { div } from '@cycle/dom'
-import { isolateSink } from 'cycle-onionify'
 
 // Pages
 import Landing from './Landing'
 import Login from './Login'
 import Sidebar from './Sidebar'
+import Styleguide from './Styleguide'
 
 // Components
 import ComponentRouter from 'component/ComponentRouter'
 
 const routes = {
   '/': Landing,
-  '/login': Login
+  '/login': Login,
+  '/styleguide': Styleguide
 }
 
 export default function main (sources) {
@@ -25,7 +26,7 @@ export default function main (sources) {
   const vdom$ = xs.combine(sidebar.DOM, page.DOM).map(([sidebarVdom, pageVdom]) => div('.main', [sidebarVdom, pageVdom]))
 
   const initialReducer$ = xs.of(() => ({ query: {}, loggedIn: true, stats: {}, sidebar: { visible: true } }))
-  const reducer$ = xs.merge(initialReducer$, sidebar.onion, page.onion, isolateSink(page.sidebar, 'sidebar'))
+  const reducer$ = xs.merge(initialReducer$, sidebar.onion, page.onion, page.isolatedSinks)
 
   return {
     DOM: vdom$,

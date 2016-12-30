@@ -36,7 +36,7 @@ function ComponentRouter (sources) {
     route$: mergeFlatten('route$', [component$]),
     HTTP: mergeFlatten('HTTP', [component$]),
     onion: mergeFlatten('onion', [component$]),
-    sidebar: mergeFlatten('sidebar', [component$])
+    isolatedSinks: mergeFlatten('isolatedSinks', [component$])
   }
 
   return sinks

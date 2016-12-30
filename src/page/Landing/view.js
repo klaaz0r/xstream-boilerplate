@@ -1,7 +1,7 @@
 import { div, h1, button, i } from '@cycle/dom'
 import R from 'ramda'
 
-export default function LandingView(state$) {
+export default function LandingView(state$, objState$) {
 
   const keyToLabel = R.pipe(R.replace(/[A-Z]/g, ',$&'), R.toUpper, R.split(','), R.join(' '))
 
@@ -19,10 +19,11 @@ export default function LandingView(state$) {
       div('.ui.text.loader', 'Loading')
     ])
   ])
-
-  const vdom$ = state$.map(state => {
-    const { stats, query } = state
-    console.log('Received render data, pairs', state)
+  /* eslint-disable */
+  debugger
+  const vdom$ = objState$.map(state => {
+    const { stats, query, sidebarVisible } = state
+    console.log('Received render data, pairs', state, sidebarVisible)
     if (!query) {
       return loading
     }
