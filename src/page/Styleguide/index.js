@@ -7,8 +7,9 @@ import input from './input'
 import menu from './menu'
 import site from './site'
 import table from './table'
+import isolate from '@cycle/isolate'
 
-export default function Styleguide(sources) {
+function Styleguide(sources) {
 
   const sinks = [ button, card, input, menu, site, table ].map(c => c(sources))
   const vdomSinks = R.pluck('DOM', sinks)
@@ -16,6 +17,9 @@ export default function Styleguide(sources) {
     .map((styleguide) => div('.ui.container', styleguide))
 
   return {
-    DOM: vdom$
+    DOM: vdom$,
+    onion: xs.of(() => ({}))
   }
 }
+
+export default sources => isolate(Styleguide)(sources)
