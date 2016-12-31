@@ -9,7 +9,7 @@ import view from './view'
 import intent from './intent'
 
 function Landing (sources) {
-  const route$ = xs.of('/landing')
+  const route$ = xs.of('/finance')
     .compose(delay(1000))
 
   const request$ = xs.of({

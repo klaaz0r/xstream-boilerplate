@@ -1,6 +1,8 @@
-// import xs from 'xstream'
+import xs from 'xstream'
 
 export default function LandingModel(action$) {
+
+  const defaultState$ = xs.of(() => ({ query: null, stats: null }))
 
   const toggleReducer$ = action$
     .filter(a => a.type === 'toggleSidebar')
@@ -15,5 +17,5 @@ export default function LandingModel(action$) {
     .map(result => result.payload)
     .map(payload => prevState => ({ ...prevState, ...payload }))
 
-  return { reducer$: getStatsReducer$, sidebarReducer$: toggleReducer$ }
+  return { reducer$: xs.merge(defaultState$, getStatsReducer$), sidebarReducer$: toggleReducer$ }
 }
