@@ -27,8 +27,9 @@
     "coverage:report": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test": "npm run lint && npm run unit-test && npm run e2e-test",
     "serve-static": "pushstate-server dist/ 8080 /200.html",
-    "serve": "cross-env BABEL_ENV=development babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server",
-    "build": "cross-env BABEL_ENV=production BUILD_ENV=production babel-node ./node_modules/webpack/bin/webpack"
+    "start": "gulp",
+    "build": "NODE_ENV=production gulp build:prod",
+    "postinstall": "node lib/semantic.fix.js"
   },
   "config": {
     "commitizen": {
@@ -77,6 +78,18 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "ghooks": "^1.2.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-help": "^1.6.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-less": "^3.3.0",
+    "gulp-purifycss": "^0.2.0",
+    "gulp-stylus": "^2.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.8",
+    "gulp-webpack": "^1.5.0",
     "image-webpack-loader": "^3.0.0",
     "isparta": "^4.0.0",
     "mocha": "^3.2.0",
@@ -87,10 +100,13 @@
     "power-assert": "^1.4.2",
     "pushstate-server": "^2.1.0",
     "selenium-server": "^2.53.0",
+    "semantic-ui-less": "^2.2.4",
     "style-loader": "^0.13.1",
     "surge": "^0.18.0",
     "validate-commit-msg": "^2.8.2",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.15.0"
   }
 }

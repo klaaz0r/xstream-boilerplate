@@ -6,8 +6,7 @@
         "espower",
         ["cycle-hmr/xstream", {
           "include": [
-            "**/src/component/**",
-            "**/src/page/**"
+            "**/app/**"
           ]
         }]
       ]

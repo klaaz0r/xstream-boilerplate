@@ -1,12 +1,12 @@
 import xs from 'xstream'
 import isolate from '@cycle/isolate'
-import {div, h1} from '@cycle/dom'
+import { div, h1 } from '@cycle/dom'
 
-function Login (sources) {
+function Login(sources) {
   return {
     DOM: xs.of(
       div({}, [
-        h1('.login', 'Login page')
+        h1('.login', 'Login page!')
       ])
     )
   }

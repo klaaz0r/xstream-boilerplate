@@ -1,22 +1,22 @@
 import dropRepeats from 'xstream/extra/dropRepeats'
 import isolate from '@cycle/isolate'
-import {div} from '@cycle/dom'
-import {eqProps} from 'ramda'
+import { div } from '@cycle/dom'
+import { eqProps } from 'ramda'
 
-import {requireSources, mergeFlatten} from 'util/index'
+import { requireSources, mergeFlatten } from '../../util/index'
 
 const equalPaths = eqProps('path')
 const loading = div('.loading', 'Loading...')
 
-const callComponent = sources => ({path, value}) => {
-  const component = value({...sources, router: sources.router.path(path)})
+const callComponent = sources => ({ path, value }) => {
+  const component = value({ ...sources, router: sources.router.path(path) })
   return {
     ...component,
     DOM: component.DOM.startWith(loading)
   }
 }
 
-function ComponentRouter (sources) {
+function ComponentRouter(sources) {
   requireSources('ComponentRouter', sources, 'routes$')
 
   const component$ = sources.routes$

@@ -1,0 +1,10 @@
+body {
+  background: #fff;
+}
+.placeholder {
+  background: #d3d3d3;
+  width: 50%;
+  margin: 0 auto;
+  padding: 15px;
+  margin-top: 25px;
+}
